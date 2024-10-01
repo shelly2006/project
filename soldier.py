@@ -1,37 +1,33 @@
-# checking which arrow button is pressed
-#
-# import pygame
-#
-# counter = 0
-# x = 0
-# y = 0
-# location = [x][y]
-# events = pygame.event.get()
-# for event in events:
-#     if event.type == pygame.KEYDOWN:
-#
-#         if event.key == pygame.K_LEFT:
-#             y -= 1
-#         elif event.key == pygame.K_RIGHT:
-#             y += 1
-#         elif event.key == pygame.K_UP:
-#             x += 1
-#         elif event.key == pygame.K_DOWN:
-#             x -= 1
-#     elif event.key == pygame.K_RETURN:
-#         mines apears
+import pygame
+def soldier_movement(loc_x, loc_y):
+    global WHILE_GAME_POINT
+    CUBE = 30
+    soldier = pygame.image.load('soldier.png')
+    soldier = pygame.transform.scale(soldier, (60, 120))
+    while WHILE_GAME_POINT:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                WHILE_GAME_POINT = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    loc_y -= CUBE
+                    screen_grass.blit(soldier, (loc_x, loc_y))
+                elif event.key == pygame.K_DOWN:
+                    loc_y += CUBE
+                    screen_grass.blit(soldier, (loc_x, loc_y))
+                elif event.key == pygame.K_LEFT:
+                    loc_x -= CUBE
+                    screen_grass.blit(soldier, (loc_x, loc_y))
+                elif event.key == pygame.K_RIGHT:
+                    loc_x += CUBE
+                    screen_grass.blit(soldier, (loc_x, loc_y))
+                elif event.key == pygame.K_RETURN:
+                    import screen
+                    screen.draw_grid()
+                    time.sleep(1)
+                if matrix_check(matrix, loc_x, loc_y):
+                    WHILE_GAME_POINT = False
+            pygame.display.flip()
+            if matrix_check(matrix, loc_x, loc_y):
+                    WHILE_GAME_POINT = False
 
-# constant
-
-STARTING_POINT = False
-ENDING_POINT = False
-WHILE_GAME_POINT = True
-WINDOW_WIDTH = 1500
-WINDOW_HEIGHT = 750
-FLAG_IMAGE = 'flag.png'
-SOLDIER_IMAGE = 'soldier.png'
-GRASS_IMAGE = 'grass.png'
-MINE_IMAGE = 'mine.png'
-INJURY_IMAGE = 'injury.png'
-SOLDIER_DANGER_IMAGE = 'soldier_nigth.png'
-GREEN = (12, 101, 37)
