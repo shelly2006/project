@@ -104,6 +104,21 @@ def draw_grid():
 
             # creating the grid
 
+def update_matrix(matrix, move):
+    new_matrix = matrix.deepcopy
+    if move == right:
+        for row in matrix:
+            for col in matrix:
+                if new_matrix[row][col] == "body":
+                    matrix[row][col + 1] = "body"
+                    matrix[row][col] = 0
+                if new_matrix[row][col] == "legs":
+                    if new_matrix[row][col + 1] == "bomb" or new_matrix[row][col + 1] == "mine.png":
+                        return "bomb"
+                    else:
+                        matrix[row][col + 1] = "legs"
+                        matrix[row][col] = 0
+
 
 
 
