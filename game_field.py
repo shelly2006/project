@@ -60,7 +60,7 @@ def draw_grass():
 
     flag = pygame.image.load('flag.png')
     flag = pygame.transform.scale(flag, (90, 120))
-    screen_grass.blit(flag, (630, 1410))
+    screen_grass.blit(flag, (1410, 630))
 
     loc_x = 0
     loc_y = 0
